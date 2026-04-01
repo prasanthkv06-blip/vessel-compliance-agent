@@ -1,4 +1,4 @@
-const API_BASE = (import.meta.env.VITE_API_URL || '') + '/api/v1'
+const API_BASE = (import.meta.env.VITE_API_URL || 'https://vessel-compliance-agent-production.up.railway.app') + '/api/v1'
 
 export async function searchVessel(imo: string) {
   const res = await fetch(`${API_BASE}/vessel/${imo}`)
