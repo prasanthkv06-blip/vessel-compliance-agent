@@ -2,4 +2,4 @@
 aptPkgs = ["libcairo2", "libpango-1.0-0", "libpangocairo-1.0-0", "libgdk-pixbuf2.0-0", "libgobject-2.0-0", "libffi-dev", "libxml2-dev", "libxslt1-dev", "gcc", "g++"]
 
 [start]
-cmd = "/app/start.sh"
+cmd = "python run_server.py"

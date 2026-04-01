@@ -22,4 +22,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 RUN chmod +x start.sh
 
-CMD ["/bin/sh", "/app/start.sh"]
+CMD ["python", "run_server.py"]
