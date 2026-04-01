@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../api/client'
 import { useNavigate } from 'react-router-dom'
 import VesselSearch, { VesselCheckRequest } from '../components/VesselSearch'
 import RiskBadge from '../components/RiskBadge'
@@ -48,7 +49,7 @@ export default function Dashboard() {
     }
 
     try {
-      const res = await fetch('/api/v1/report/check', {
+      const res = await fetch(`${API_BASE}/report/check`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

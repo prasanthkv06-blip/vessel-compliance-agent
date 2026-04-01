@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { API_BASE } from '../api/client'
 
 export interface OwnerInput {
   entity_name: string
@@ -108,7 +109,7 @@ export default function VesselSearch({ onSubmit, loading }: Props) {
       setLookupError('')
       try {
         const params = new URLSearchParams({ ...(form.vessel_name ? { vessel_name: form.vessel_name } : {}) })
-        const res = await fetch(`/api/v1/vessel/lookup/${imo}?${params}`)
+        const res = await fetch(`${API_BASE}/vessel/lookup/${imo}?${params}`)
         if (!res.ok) {
           const err = await res.json()
           setLookupError(err.detail || 'Vessel not found in registry. Please enter details manually.')

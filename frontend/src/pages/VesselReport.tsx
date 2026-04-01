@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { API_BASE } from '../api/client'
 import { useParams } from 'react-router-dom'
 import RiskBadge from '../components/RiskBadge'
 
@@ -40,7 +41,7 @@ export default function VesselReport() {
           return
         }
         // Fall back to sample-data endpoint for direct URL navigation
-        const res = await fetch(`/api/v1/report/generate?imo=${imo}`, { method: 'POST' })
+        const res = await fetch(`${API_BASE}/report/generate?imo=${imo}`, { method: 'POST' })
         if (!res.ok) throw new Error('Failed to generate report')
         const data = await res.json()
         setReport(data)
@@ -80,13 +81,13 @@ export default function VesselReport() {
         <div className="flex items-center gap-4">
           <RiskBadge level={report.overall_risk as any} size="lg" />
           <button
-            onClick={() => window.open(`/api/v1/report/view/${imo}/html`, '_blank')}
+            onClick={() => window.open(`${API_BASE}/report/view/${imo}/html`, '_blank')}
             className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm transition"
           >
             View Full Report
           </button>
           <a
-            href={`/api/v1/report/view/${imo}/pdf`}
+            href={`${API_BASE}/report/view/${imo}/pdf`}
             download
             className="bg-blue-600/80 hover:bg-blue-600 px-4 py-2 rounded-lg text-sm transition"
           >
