@@ -39,3 +39,6 @@ nohup.out
 
 # WeasyPrint / temp files
 /tmp/
+data/sanctions/*.xml
+data/sanctions/*.csv
+data/sanctions/*.txt
