@@ -123,6 +123,30 @@ cd frontend && npm install && npm run dev
 python -m backend.report_generator --imo 9662693
 ```
 
+## Live Deployment (2026-04-01) ✅
+
+### Backend — Railway
+- **URL**: `https://vessel-compliance-agent-production.up.railway.app`
+- **Service ID**: `d85545e3-1268-48e9-8f88-28bf55918ea3`
+- **Project ID**: `a816fd6c-a2f1-4765-95ac-0d98a4e781aa` ("dependable-encouragement")
+- **Environment ID**: `6e576f5f-a46b-4613-b52b-2b328ac3f4eb`
+- **Builder**: Dockerfile, root dir `backend/`, start cmd `python run_server.py`
+- **Critical**: Always pin `pydyf==0.11.0` + `weasyprint==66.0` — pydyf 0.12.x breaks PDF generation
+- **Critical**: Railway caches Docker layers. New dependencies require `githubRepoDeploy` (fresh service), not redeploy of existing service
+
+### Frontend — Vercel
+- **URL**: `https://frontend-five-beta-93.vercel.app`
+- **Project ID**: `prj_xA0qrlSxTJLvNPCCgTu0NFLSZguW`
+- **API base**: hardcoded in `frontend/src/api/client.ts` — update here + `frontend/.env.production` if backend URL changes
+
+### Railway GraphQL API
+```bash
+curl -X POST https://backboard.railway.app/graphql/v2 \
+  -H "Authorization: Bearer f791d9d0-63c7-4b7d-9a78-fc9adf3adaf4" \
+  -H "Content-Type: application/json" \
+  -d '{"query":"..."}'
+```
+
 ## Architecture
 See `docs/ARCHITECTURE.md` for full system design.
 
