@@ -1,0 +1,20 @@
+{
+  "note": "SAMPLE DATA FOR TESTING ONLY - Not real sanctions entries",
+  "entries": [
+    {
+      "name": "TEST SHIPPING CORP",
+      "program": "IRAN-EO13846",
+      "list": "OFAC SDN"
+    },
+    {
+      "name": "DARK FLEET TANKERS LLC",
+      "program": "RUSSIA-EO14024",
+      "list": "OFAC SDN"
+    },
+    {
+      "name": "SANCTIONED MARITIME LTD",
+      "program": "SYRIA",
+      "list": "EU Consolidated"
+    }
+  ]
+}
